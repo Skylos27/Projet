@@ -82,6 +82,7 @@
             this.textBox1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox1.Location = new System.Drawing.Point(115, 68);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(589, 68);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "Welcome on Overview !!";
