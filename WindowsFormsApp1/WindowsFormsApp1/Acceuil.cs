@@ -7,14 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
-namespace WindowsFormsApp1
+
+namespace Overview
 {
     public partial class Overview : Form
     {
-        public Overview()
+        private SqlConnection _sqlConnection;
+
+        public Overview(SqlConnection sqlConnection)
         {
             InitializeComponent();
+            _sqlConnection = sqlConnection;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -24,9 +29,8 @@ namespace WindowsFormsApp1
 
         private void Anime_Click(object sender, EventArgs e)
         {
-            System.Threading.Thread monthread = new System.Threading.Thread(new System.Threading.ThreadStart(ouvrir_Anime));
-            monthread.Start();
-            this.Close();
+            Anime newWind = new Anime(_sqlConnection);   // On instancie la fenètre principale
+            newWind.Show();
         }
 
         private void Film_Click(object sender, EventArgs e)
@@ -41,7 +45,7 @@ namespace WindowsFormsApp1
 
         private void ouvrir_Anime()
         {
-            Application.Run(new Anime());
+            Application.Run(new Anime(_sqlConnection));
         }
 
         

@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
-namespace WindowsFormsApp1
+namespace Overview
 {
     public partial class Anime : Form
     {
-        public Anime()
+        private SqlConnection _sqlConnection;
+
+        public Anime(SqlConnection sqlConnection)
         {
             InitializeComponent();
         }
@@ -24,14 +27,11 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            System.Threading.Thread monthread = new System.Threading.Thread(new System.Threading.ThreadStart(ouvrirnouveauform));
-            monthread.Start();
             this.Close();
         }
 
         public static void ouvrirnouveauform()
         {
-            Application.Run(new Overview());
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
